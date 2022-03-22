@@ -17,4 +17,8 @@ public enum File {
     File(int file) {
         this.file = file;
     }
+
+    public int getFile() {
+        return file;
+    }
 }

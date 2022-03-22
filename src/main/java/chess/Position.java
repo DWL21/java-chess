@@ -8,4 +8,12 @@ public class Position {
         this.rank = rank;
         this.file = file;
     }
+
+    public int getFile() {
+        return file.getFile();
+    }
+
+    public int getRank() {
+        return rank.getRank();
+    }
 }

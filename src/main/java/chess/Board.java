@@ -9,7 +9,8 @@ import static chess.Rank.*;
 
 public class Board {
     private static final Map<Position, Pieces> INIT_BOARD = new HashMap<>();
-    private static final int RANK_LENGTH = 8;
+
+    private final List<Square> squares;
 
     static {
         initBlackPieces();
@@ -17,38 +18,40 @@ public class Board {
     }
 
     private static void initWhitePieces() {
-        INIT_BOARD.put(new Position(EIGHT, A), WHITE_ROOK);
-        INIT_BOARD.put(new Position(EIGHT, B), WHITE_KNIGHT);
-        INIT_BOARD.put(new Position(EIGHT, C), WHITE_BISHOP);
-        INIT_BOARD.put(new Position(EIGHT, D), WHITE_QUEEN);
-        INIT_BOARD.put(new Position(EIGHT, E), WHITE_KING);
-        INIT_BOARD.put(new Position(EIGHT, F), WHITE_BISHOP);
-        INIT_BOARD.put(new Position(EIGHT, G), WHITE_KNIGHT);
-        INIT_BOARD.put(new Position(EIGHT, H), WHITE_ROOK);
+        INIT_BOARD.put(new Position(ONE, A), WHITE_ROOK);
+        INIT_BOARD.put(new Position(ONE, B), WHITE_KNIGHT);
+        INIT_BOARD.put(new Position(ONE, C), WHITE_BISHOP);
+        INIT_BOARD.put(new Position(ONE, D), WHITE_QUEEN);
+        INIT_BOARD.put(new Position(ONE, E), WHITE_KING);
+        INIT_BOARD.put(new Position(ONE, F), WHITE_BISHOP);
+        INIT_BOARD.put(new Position(ONE, G), WHITE_KNIGHT);
+        INIT_BOARD.put(new Position(ONE, H), WHITE_ROOK);
         for (File file : File.values()) {
-            INIT_BOARD.put(new Position(SEVEN, file), WHITE_PAWN);
+            INIT_BOARD.put(new Position(TWO, file), WHITE_PAWN);
         }
     }
 
     private static void initBlackPieces() {
-        INIT_BOARD.put(new Position(ONE, A), BLACK_ROOK);
-        INIT_BOARD.put(new Position(ONE, B), BLACK_KNIGHT);
-        INIT_BOARD.put(new Position(ONE, C), BLACK_BISHOP);
-        INIT_BOARD.put(new Position(ONE, D), BLACK_QUEEN);
-        INIT_BOARD.put(new Position(ONE, E), BLACK_KING);
-        INIT_BOARD.put(new Position(ONE, F), BLACK_BISHOP);
-        INIT_BOARD.put(new Position(ONE, G), BLACK_KNIGHT);
-        INIT_BOARD.put(new Position(ONE, H), BLACK_ROOK);
+        INIT_BOARD.put(new Position(EIGHT, A), BLACK_ROOK);
+        INIT_BOARD.put(new Position(EIGHT, B), BLACK_KNIGHT);
+        INIT_BOARD.put(new Position(EIGHT, C), BLACK_BISHOP);
+        INIT_BOARD.put(new Position(EIGHT, D), BLACK_QUEEN);
+        INIT_BOARD.put(new Position(EIGHT, E), BLACK_KING);
+        INIT_BOARD.put(new Position(EIGHT, F), BLACK_BISHOP);
+        INIT_BOARD.put(new Position(EIGHT, G), BLACK_KNIGHT);
+        INIT_BOARD.put(new Position(EIGHT, H), BLACK_ROOK);
         for (File file : File.values()) {
-            INIT_BOARD.put(new Position(TWO, file), BLACK_PAWN);
+            INIT_BOARD.put(new Position(SEVEN, file), BLACK_PAWN);
         }
     }
 
-    private final List<Square> board;
-
     public Board() {
-        board = INIT_BOARD.entrySet()
+        squares = INIT_BOARD.entrySet()
                 .stream()
                 .map(a -> new Square(a.getKey(), a.getValue())).collect(Collectors.toList());
+    }
+
+    public List<Square> getSquares() {
+        return squares;
     }
 }
