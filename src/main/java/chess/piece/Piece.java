@@ -4,7 +4,7 @@ import chess.Color;
 import chess.Position;
 
 public abstract class Piece {
-    private final Color color;
+    protected final Color color;
     protected final Position position;
 
     protected Piece(Color color, Position position) {

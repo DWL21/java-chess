@@ -1,23 +1,25 @@
 package chess.piece;
 
 import chess.Color;
-import chess.File;
 import chess.Position;
-import chess.Rank;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
-import static chess.Color.*;
-import static chess.File.*;
-import static chess.Rank.*;
+import static chess.Color.BLACK;
+import static chess.Color.WHITE;
+import static chess.File.C;
+import static chess.File.F;
+import static chess.Rank.EIGHT;
+import static chess.Rank.ONE;
 
 public class Bishop extends Piece {
 
     private static final List<Piece> INIT_BISHOP = new ArrayList<>();
 
-    private static final String symbol = "b";
+    private static final String SYMBOL = "b";
 
     static {
         INIT_BISHOP.add(new Bishop(BLACK, new Position(EIGHT, C)));
@@ -32,7 +34,10 @@ public class Bishop extends Piece {
     }
 
     public String getSymbol() {
-        return symbol;
+        if (this.color == BLACK) {
+            return SYMBOL.toUpperCase(Locale.ROOT);
+        }
+        return SYMBOL;
     }
 
     public static List<Piece> getBishops() {

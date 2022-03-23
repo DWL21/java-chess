@@ -6,6 +6,7 @@ import chess.Position;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import static chess.Color.BLACK;
 import static chess.Color.WHITE;
@@ -16,7 +17,7 @@ import static chess.Rank.ONE;
 public class King extends Piece{
     private static final List<Piece> INIT_KING = new ArrayList<>();
 
-    private static final String symbol = "k";
+    private static final String SYMBOL = "k";
 
     static {
         INIT_KING.add(new King(BLACK, new Position(EIGHT, E)));
@@ -29,7 +30,10 @@ public class King extends Piece{
     }
 
     public String getSymbol() {
-        return symbol;
+        if (this.color == BLACK) {
+            return SYMBOL.toUpperCase(Locale.ROOT);
+        }
+        return SYMBOL;
     }
 
     public static List<Piece> getKings() {

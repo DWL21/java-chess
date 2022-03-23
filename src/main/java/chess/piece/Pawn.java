@@ -7,6 +7,7 @@ import chess.Position;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import static chess.Color.BLACK;
 import static chess.Color.WHITE;
@@ -16,7 +17,7 @@ public class Pawn extends Piece {
 
     private static final List<Piece> INIT_PAWN = new ArrayList<>();
 
-    private static final String symbol = "p";
+    private static final String SYMBOL = "p";
 
     static {
         for (File file : File.values()) {
@@ -30,9 +31,11 @@ public class Pawn extends Piece {
     }
 
     public String getSymbol() {
-        return symbol;
+        if (this.color == BLACK) {
+            return SYMBOL.toUpperCase(Locale.ROOT);
+        }
+        return SYMBOL;
     }
-
     public static List<Piece> getPawns() {
         return Collections.unmodifiableList(INIT_PAWN);
     }

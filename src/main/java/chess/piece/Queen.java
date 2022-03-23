@@ -6,6 +6,7 @@ import chess.Position;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import static chess.Color.BLACK;
 import static chess.Color.WHITE;
@@ -17,7 +18,7 @@ public class Queen extends Piece {
 
     private static final List<Piece> INIT_QUEEN = new ArrayList<>();
 
-    private static final String symbol = "q";
+    private static final String SYMBOL = "q";
 
     static {
         INIT_QUEEN.add(new Queen(BLACK, new Position(EIGHT, D)));
@@ -29,7 +30,10 @@ public class Queen extends Piece {
     }
 
     public String getSymbol() {
-        return symbol;
+        if (this.color == BLACK) {
+            return SYMBOL.toUpperCase(Locale.ROOT);
+        }
+        return SYMBOL;
     }
 
     public static List<Piece> getQueens() {
