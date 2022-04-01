@@ -5,10 +5,13 @@ import chess.piece.*;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static chess.Player.BLACK;
 import static chess.Player.WHITE;
+import static chess.board.File.*;
+import static chess.board.Rank.*;
 
 public final class ChessBoard {
 
@@ -23,43 +26,39 @@ public final class ChessBoard {
     }
 
     private static void createBlanks() {
-        for (int rank = 3; rank <= 6; rank++){
+        for (Rank rank : List.of(THREE, FOUR, FIVE, SIX)) {
             createBlank(rank);
         }
     }
 
-    private static void createBlank(final int rank) {
-        for (int file = 1; file <= 8; file++) {
+    private static void createBlank(final Rank rank) {
+        for (File file : File.values()) {
             INITIAL_BOARD.put(new Coordinate(rank, file), new Blank());
         }
     }
 
     private static void createWhitePieces() {
-        INITIAL_BOARD.put(new Coordinate(1, 1), new Rook(WHITE));
-        INITIAL_BOARD.put(new Coordinate(1, 2), new Knight(WHITE));
-        INITIAL_BOARD.put(new Coordinate(1, 3), new Bishop(WHITE));
-        INITIAL_BOARD.put(new Coordinate(1, 4), new Queen(WHITE));
-        INITIAL_BOARD.put(new Coordinate(1, 5), new King(WHITE));
-        INITIAL_BOARD.put(new Coordinate(1, 6), new Bishop(WHITE));
-        INITIAL_BOARD.put(new Coordinate(1, 7), new Knight(WHITE));
-        INITIAL_BOARD.put(new Coordinate(1, 8), new Rook(WHITE));
-        createPawns(2, WHITE);
+        createPieces(ONE, WHITE, TWO);
     }
 
     private static void createBlackPieces() {
-        INITIAL_BOARD.put(new Coordinate(8, 1), new Rook(BLACK));
-        INITIAL_BOARD.put(new Coordinate(8, 2), new Knight(BLACK));
-        INITIAL_BOARD.put(new Coordinate(8, 3), new Bishop(BLACK));
-        INITIAL_BOARD.put(new Coordinate(8, 4), new Queen(BLACK));
-        INITIAL_BOARD.put(new Coordinate(8, 5), new King(BLACK));
-        INITIAL_BOARD.put(new Coordinate(8, 6), new Bishop(BLACK));
-        INITIAL_BOARD.put(new Coordinate(8, 7), new Knight(BLACK));
-        INITIAL_BOARD.put(new Coordinate(8, 8), new Rook(BLACK));
-        createPawns(7, BLACK);
+        createPieces(EIGHT, BLACK, SEVEN);
     }
 
-    private static void createPawns(final int rank, final Player player) {
-        for (int file = 1; file <= 8; file++) {
+    private static void createPieces(final Rank pieces, final Player player, final Rank pawn) {
+        INITIAL_BOARD.put(new Coordinate(pieces, A), new Rook(player));
+        INITIAL_BOARD.put(new Coordinate(pieces, B), new Knight(player));
+        INITIAL_BOARD.put(new Coordinate(pieces, C), new Bishop(player));
+        INITIAL_BOARD.put(new Coordinate(pieces, D), new Queen(player));
+        INITIAL_BOARD.put(new Coordinate(pieces, E), new King(player));
+        INITIAL_BOARD.put(new Coordinate(pieces, F), new Bishop(player));
+        INITIAL_BOARD.put(new Coordinate(pieces, G), new Knight(player));
+        INITIAL_BOARD.put(new Coordinate(pieces, H), new Rook(player));
+        createPawns(pawn, player);
+    }
+
+    private static void createPawns(final Rank rank, final Player player) {
+        for (File file : File.values()) {
             INITIAL_BOARD.put(new Coordinate(rank, file), new Pawn(player));
         }
     }

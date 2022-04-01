@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Coordinate {
 
-    private final int rank;
-    private final int file;
+    private final Rank rank;
+    private final File file;
 
-    public Coordinate(int rank, int file) {
+    public Coordinate(final Rank rank, final File file) {
         this.rank = rank;
         this.file = file;
     }
