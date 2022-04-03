@@ -12,4 +12,9 @@ public final class Pawn extends Piece {
     public boolean isPawn() {
         return true;
     }
+
+    @Override
+    public String getSymbol() {
+        return Symbol.PAWN.playerSymbol(player);
+    }
 }

@@ -2,6 +2,8 @@ package chess.piece;
 
 import chess.Player;
 
+import static chess.piece.Symbol.*;
+
 public final class King extends Piece {
 
     public King(final Player player) {
@@ -11,5 +13,10 @@ public final class King extends Piece {
     @Override
     public boolean isKing() {
         return true;
+    }
+
+    @Override
+    public String getSymbol() {
+        return KING.playerSymbol(player);
     }
 }

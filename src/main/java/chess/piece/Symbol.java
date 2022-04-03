@@ -21,7 +21,7 @@ public enum Symbol {
         this.black = black;
     }
 
-    public String getSymbol(final Player player) {
+    public String playerSymbol(final Player player) {
         if (player.isWhite()) {
             return white;
         }

@@ -13,7 +13,7 @@ class SymbolTest {
     @DisplayName("흰색 기물의 기호를 제대로 반환하는지 확인한다.")
     @Test
     void get_symbol_white() {
-        String symbol = PAWN.getSymbol(Player.WHITE);
+        String symbol = PAWN.playerSymbol(Player.WHITE);
 
         assertThat(symbol).isEqualTo("♙");
     }
@@ -21,7 +21,7 @@ class SymbolTest {
     @DisplayName("검은색 기물의 기호를 제대로 반환하는지 확인한다.")
     @Test
     void get_symbol_black() {
-        String symbol = PAWN.getSymbol(Player.BLACK);
+        String symbol = PAWN.playerSymbol(Player.BLACK);
 
         assertThat(symbol).isEqualTo("♟");
     }
@@ -29,7 +29,7 @@ class SymbolTest {
     @DisplayName("빈 좌표의 기호를 제대로 반환하는지 확인한다.")
     @Test
     void get_symbol_blank() {
-        String symbol = BLANK.getSymbol(Player.BLACK);
+        String symbol = BLANK.playerSymbol(Player.BLACK);
 
         assertThat(symbol).isEqualTo(".");
     }

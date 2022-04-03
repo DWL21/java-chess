@@ -37,4 +37,6 @@ public abstract class Piece {
     public boolean isBlank() {
         return false;
     }
+
+    public abstract String getSymbol();
 }
