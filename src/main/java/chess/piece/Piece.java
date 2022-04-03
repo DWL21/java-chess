@@ -1,6 +1,11 @@
 package chess.piece;
 
 import chess.Player;
+import chess.board.Coordinate;
+import chess.board.Direction;
+
+import java.util.List;
+import java.util.Map;
 
 public abstract class Piece {
 
@@ -39,4 +44,10 @@ public abstract class Piece {
     }
 
     public abstract String getSymbol();
+
+    public List<Coordinate> findMovableCoordinates(Player player, Map<Coordinate, Piece> chessBoard, Coordinate source) {
+        return null;
+    }
+
+    protected abstract List<Direction> getDirections();
 }

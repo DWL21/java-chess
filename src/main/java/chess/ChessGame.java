@@ -9,6 +9,7 @@ import chess.view.InputView;
 import chess.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +42,7 @@ public final class ChessGame {
         for (Rank rank : Rank.values()) {
             symbolInRank(chessBoard, chessBoardSymbols, rank);
         }
-        return chessBoardSymbols;
+        return Collections.unmodifiableList(chessBoardSymbols);
     }
 
     private void symbolInRank(final Map<Coordinate, Piece> chessBoard, final List<String> chessBoardSymbols, Rank rank) {

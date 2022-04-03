@@ -16,9 +16,13 @@ import static chess.board.Rank.*;
 public final class ChessBoard {
 
     static final Map<Coordinate, Piece> INITIAL_BOARD = new HashMap<>();
-    
+
     final Map<Coordinate, Piece> chessBoard;
-    
+
+    public ChessBoard() {
+        chessBoard = new HashMap<>(INITIAL_BOARD);
+    }
+
     static {
         createBlanks();
         createWhitePieces();
@@ -27,11 +31,11 @@ public final class ChessBoard {
 
     private static void createBlanks() {
         for (Rank rank : List.of(THREE, FOUR, FIVE, SIX)) {
-            createBlank(rank);
+            createBlanks(rank);
         }
     }
 
-    private static void createBlank(final Rank rank) {
+    private static void createBlanks(final Rank rank) {
         for (File file : File.values()) {
             INITIAL_BOARD.put(new Coordinate(rank, file), new Blank());
         }
@@ -61,10 +65,6 @@ public final class ChessBoard {
         for (File file : File.values()) {
             INITIAL_BOARD.put(new Coordinate(rank, file), new Pawn(player));
         }
-    }
-
-    public ChessBoard() {
-        chessBoard = new HashMap<>(INITIAL_BOARD);
     }
 
     public Map<Coordinate, Piece> getChessBoard() {
